@@ -7,19 +7,21 @@ export default class SortingVisualizer extends Component{
         super();
         this.state = {
             array: [],
+            arrayLen: 10,
         };
     }
 
     componentDidMount(){
-        this.resetArray()
+        this.resetArray(this.state.arrayLen)
     }
 
-    resetArray(){
+    resetArray(len_){
         const array = []
-        for (let i = 0; i < 100; i ++){
+        for (let i = 0; i < len_; i ++){
             array.push(this.getRandomInt(10, 500))
-        this.setState({array})
         }
+        this.setState({array})
+        this.setState({arrayLen: len_})
     }
 
     // https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
@@ -31,13 +33,17 @@ export default class SortingVisualizer extends Component{
 
     render(){
         const {array} = this.state
-        const width = (1000-array.length-1)/(array.length)
+        const width = ((1200 - 2 - (array.length*2))/(array.length))
         return(
-            <div className = 'array-container'>
-                {array.map((value, idX) => (
-                <div className = "array-element" key = {idX} style = {{backgroundColor: 'black', width: `${width}px`, height: `${value}px`}}>
+            <div>
+                <div className = 'array-container'>
+                    {array.map((value, idX) => (
+                    <div className = "array-element" key = {idX} style = {{backgroundColor: 'black', width: `${width}px`, height: `${value}px`}}>
+                    </div>
+                    ))}
                 </div>
-                ))}
+                <button onClick={() => this.resetArray(this.state.arrayLen)}>Generate Random Array</button>
+                <input type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "10" defaultValue = {this.state.arrayLen} onInput = {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>
             </div>
             );
     }
