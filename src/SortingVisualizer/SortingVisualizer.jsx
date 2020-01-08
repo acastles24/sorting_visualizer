@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import './SortingVisualizer.css'
+import {mergeSort} from '../SortingAlgorithms/mergeSort'
 
 
 export default class SortingVisualizer extends Component{
@@ -13,6 +14,17 @@ export default class SortingVisualizer extends Component{
 
     componentDidMount(){
         this.resetArray(this.state.arrayLen)
+    }
+
+    quickSortButton(){
+
+    }
+
+    mergeSortButton(array){
+        console.log(array)
+        let sorted = mergeSort(array)
+        console.log(sorted)
+        this.setState({array: sorted, arrayLen: sorted.length})
     }
 
     resetArray(len_){
@@ -43,7 +55,9 @@ export default class SortingVisualizer extends Component{
                     ))}
                 </div>
                 <button onClick={() => this.resetArray(this.state.arrayLen)}>Generate Random Array</button>
-                <input type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "10" defaultValue = {this.state.arrayLen} onInput = {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>
+                <button onClick={() => this.mergeSortButton(this.state.array)}>Merge Sort</button>
+                <button onClick={() => this.quickSortButton(this.state.array)}>Quick Sort</button>
+                <input type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" defaultValue = {this.state.arrayLen} onInput = {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>
             </div>
             );
     }
