@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './SortingVisualizer.css'
-// import {mergeSort} from '../SortingAlgorithms/mergeSort'
+import {mergeSort} from '../SortingAlgorithms/mergeSort'
 
 
 export default class SortingVisualizer extends Component{
@@ -21,8 +21,7 @@ export default class SortingVisualizer extends Component{
     }
 
     mergeSortButton(array){
-        let sortedArray = this.mergeSort(array)
-        // this.setState({array: sorted, arrayLen: sorted.length})
+        let sortedArray = mergeSort(array)
     }
 
     resetArray(len_){
@@ -49,7 +48,7 @@ export default class SortingVisualizer extends Component{
             <div>
                 <div className = 'array-container'>
                     {array.map((value, idX) => (
-                    <div className = "array-element" key = {idX} style = {{backgroundColor: 'black', width: `${width}px`, height: `${value}px`}}>
+                    <div className = 'array-element'  key = {idX} style = {{backgroundColor: 'black', width: `${width}px`, height: `${value}px`}}>
                     </div>
                     ))}
                 </div>
@@ -60,58 +59,4 @@ export default class SortingVisualizer extends Component{
             </div>
             );
     }  
-
-    mergeSort(array) {
-        let step = 1;
-        let animateIdx = 1;
-        while (step < array.length) {
-          let left = 0;
-          while (left + step < array.length) {
-            animateIdx = this.merge(array, left, step, animateIdx);
-            left += step * 2;
-          }
-          step *= 2;
-        }
-        return array
-      }
-      
-      merge(array, left, step, animateIdx) {
-        let right = left + step;
-        let end = Math.min(left + step * 2 - 1, array.length - 1);
-        let leftMoving = left;
-        let rightMoving = right;
-        let temp = [];
-      
-        for (let i = left; i <= end; i++) {
-          if ((array[leftMoving] <= array[rightMoving] || rightMoving > end) &&
-              leftMoving < right) {
-            temp[i] = array[leftMoving];
-            leftMoving++;
-          } else {
-            temp[i] = array[rightMoving];
-            rightMoving++;
-          }
-        }
-      
-        for (let j = left; j <= end; j++) {
-          console.log(j)
-          const arrayBars = document.getElementsByClassName('array-element');
-          const barStyle = arrayBars[j].style;
-          this.doScaledTimeout(barStyle, temp[j], animateIdx)
-          animateIdx += 2
-          array[j] = temp[j];
-        }
-        return animateIdx
-      }    
-
-      doScaledTimeout(barStyle, value, i){
-          setTimeout(() => {
-            barStyle.backgroundColor = 'red';
-            barStyle.height = `${value}px`
-          }, i * 10)
-
-          setTimeout(() => {
-            barStyle.backgroundColor = 'black';
-          }, (i + 1) * 10)
-      }
 }
