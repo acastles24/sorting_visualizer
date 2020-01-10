@@ -8,7 +8,7 @@ export default class SortingVisualizer extends Component{
         super();
         this.state = {
             array: [],
-            arrayLen: 10,
+            arrayLen: 100,
             sorted: false
         };
     }
@@ -21,9 +21,12 @@ export default class SortingVisualizer extends Component{
 
     }
 
-    mergeSortButton(array){
-        let mergeSortInit = new mergeSort
-        let sortedArray = mergeSortInit.mergeSortStart(array)
+    async mergeSortButton(array){
+        if (this.state.sorted){
+            this.setState({sorted: false})
+        }
+        let arrayCopy = array.slice()
+        await mergeSort(arrayCopy)
         this.setState({sorted: true})
     }
 
@@ -66,14 +69,6 @@ export default class SortingVisualizer extends Component{
             </div>
             );
     }
-    animationScaledTimeout(i){
-        setTimeout(() => {
-          let elements = document.getElementsByClassName('array-element')
-          for(var i = elements.length - 1; i >= 0; --i){
-            elements[i].className = "array-element array-element-sorted"
-          }
-        }, i * 10)
-      }
     
     // render does not change class of visible elements back to array-element.
     resetExistingElements(){
