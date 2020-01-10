@@ -1,24 +1,27 @@
-export function mergeSort(array){
-    return new Promise(async function(resolve) {
-      console.log(array.length)
+export class mergeSort{
+  constructor(sortingSpeed){
+    this.sortingSpeed = sortingSpeed
+    console.log(this.sortingSpeed)
+  }
+
+  mergeSortStart(array){  
+    return new Promise(async (resolve) => {
     let step = 1;
     while (step < array.length) {
       let left = 0;
       while (left + step < array.length) {
-        // console.log('LEFT ' + left)
-        // console.log('STEP ' + step)
-        await merge(array, left, step);
+        await this.merge(array, left, step);
         left += step * 2;
       }
       step *= 2;
   }
-  await animationScaledTimeout()
+  await this.animationScaledTimeout()
   resolve(array)
   })
 }
 
-function merge(array, left, step) {
-  return new Promise(async function(resolve) {
+merge(array, left, step) {
+  return new Promise(async (resolve) => {
     let arrayBars = document.getElementsByClassName('array-element');
     let right = left + step;
     let end = Math.min(left + step * 2 - 1, array.length - 1);
@@ -40,42 +43,43 @@ function merge(array, left, step) {
       console.log(j)
       const barStyle = arrayBars[j].style;
       array[j] = temp[j];
-      await highlightBar(barStyle, temp[j])
-      await resetBarColor(barStyle, temp[j])
+      await this.highlightBar(barStyle, temp[j])
+      await this.resetBarColor(barStyle, temp[j])
     }
     resolve()
   })
 }
 
 
-function highlightBar(barStyle, value){
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      barStyle.backgroundColor = 'red';
-      barStyle.height = `${value}px`;
-      resolve()
-    }, 50)
-  })
-}
+  highlightBar(barStyle, value){
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        barStyle.backgroundColor = 'red';
+        barStyle.height = `${value}px`;
+        resolve()
+      }, this.sortingSpeed)
+    })
+  }
 
-function resetBarColor(barStyle){
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      barStyle.backgroundColor = 'black';
-      resolve()
-    }, 50)
-  })
-}
+  resetBarColor(barStyle){
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        barStyle.backgroundColor = 'black';
+        resolve()
+      }, this.sortingSpeed)
+    })
+  }
 
 
-function animationScaledTimeout(){
-  return new Promise((resolve) => {
-    let elements = document.getElementsByClassName("array-element")
-          for (var i = elements.length - 1; i >= 0; --i) {
-            elements[i].className = "array-element array-element-sorted"
-          }
-    setTimeout(() => {
-      resolve()
-    }, 2000)
-  })
+  animationScaledTimeout(){
+    return new Promise((resolve) => {
+      let elements = document.getElementsByClassName("array-element")
+            for (var i = elements.length - 1; i >= 0; --i) {
+              elements[i].className = "array-element array-element-sorted"
+            }
+      setTimeout(() => {
+        resolve()
+      }, 2000)
+    })
+  }
 }
