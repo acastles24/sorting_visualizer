@@ -9,7 +9,8 @@ export default class SortingVisualizer extends Component{
         this.state = {
             array: [],
             arrayLen: 100,
-            sorted: false
+            sorted: false,
+            sortingSpeed: 1
         };
     }
 
@@ -43,6 +44,10 @@ export default class SortingVisualizer extends Component{
         this.setState({arrayLen: len_})
     }
 
+    resetSpeed(len_){
+        this.setState({sortingSpeed: 100/len_})
+    }
+
     // https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
     getRandomInt(min, max) {
         min = Math.ceil(min);
@@ -65,7 +70,10 @@ export default class SortingVisualizer extends Component{
                 <button onClick={() => this.resetArray(this.state.arrayLen)}>Generate Random Array</button>
                 <button onClick={() => this.mergeSortButton(this.state.array)}>Merge Sort</button>
                 <button onClick={() => this.quickSortButton(this.state.array)}>Quick Sort</button>
-                <input type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" defaultValue = {this.state.arrayLen} onInput = {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>
+                <input type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" 
+                defaultValue = {this.state.arrayLen} onInput = 
+                {() => {this.resetArray(document.getElementById("arrayLengthSlider").value);
+                this.resetSpeed(document.getElementById("arrayLengthSlider").value)}}></input>
             </div>
             );
     }

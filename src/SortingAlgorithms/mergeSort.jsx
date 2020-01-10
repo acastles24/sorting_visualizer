@@ -1,9 +1,12 @@
 export function mergeSort(array){
     return new Promise(async function(resolve) {
+      console.log(array.length)
     let step = 1;
     while (step < array.length) {
       let left = 0;
       while (left + step < array.length) {
+        // console.log('LEFT ' + left)
+        // console.log('STEP ' + step)
         await merge(array, left, step);
         left += step * 2;
       }
@@ -12,6 +15,7 @@ export function mergeSort(array){
   await animationScaledTimeout()
   resolve(array)
   })
+}
 
 function merge(array, left, step) {
   return new Promise(async function(resolve) {
@@ -33,15 +37,16 @@ function merge(array, left, step) {
       }
     }
     for (let j = left; j <= end; j++) {
+      console.log(j)
       const barStyle = arrayBars[j].style;
+      array[j] = temp[j];
       await highlightBar(barStyle, temp[j])
       await resetBarColor(barStyle, temp[j])
-      array[j] = temp[j];
     }
     resolve()
   })
 }
-}    
+
 
 function highlightBar(barStyle, value){
   return new Promise((resolve) => {
@@ -49,7 +54,7 @@ function highlightBar(barStyle, value){
       barStyle.backgroundColor = 'red';
       barStyle.height = `${value}px`;
       resolve()
-    }, 10)
+    }, 50)
   })
 }
 
@@ -58,19 +63,19 @@ function resetBarColor(barStyle){
     setTimeout(() => {
       barStyle.backgroundColor = 'black';
       resolve()
-    }, 10)
+    }, 50)
   })
 }
 
 
 function animationScaledTimeout(){
   return new Promise((resolve) => {
-    setTimeout(() => {
-      let elements = document.getElementsByClassName("array-element")
+    let elements = document.getElementsByClassName("array-element")
           for (var i = elements.length - 1; i >= 0; --i) {
             elements[i].className = "array-element array-element-sorted"
           }
+    setTimeout(() => {
       resolve()
-    }, 10)
+    }, 2000)
   })
 }
