@@ -12,14 +12,13 @@
 
 .array-element-sorted{
     animation-name: sortedAnimation;
-    animation-duration: 4s;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
 
 }
 
 @keyframes sortedAnimation{
-    0%   {background-color:black; left:0px; top:0px;}
-  25%  {background-color:rgb(17, 9, 133); left:200px; top:0px;}
-  50%  {background-color:blue; left:200px; top:200px;}
-  75%  {background-color:rgb(15, 209, 209); left:0px; top:200px;}
-  100% {background-color:rgba(43, 255, 0, 0.699); left:0px; top:0px;}
+    0%   {background-color:black;}
+  50%  {background-color:rgb(15, 209, 209);}
+  100% {background-color:rgba(43, 255, 0, 0.699);}
 }
