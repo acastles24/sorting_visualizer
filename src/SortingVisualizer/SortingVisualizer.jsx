@@ -22,7 +22,8 @@ export default class SortingVisualizer extends Component{
     }
 
     mergeSortButton(array){
-        let sortedArray = mergeSort(array)
+        let mergeSortInit = new mergeSort
+        let sortedArray = mergeSortInit.mergeSortStart(array)
         this.setState({sorted: true})
     }
 
@@ -50,7 +51,6 @@ export default class SortingVisualizer extends Component{
         const {array} = this.state;
         const width = ((1200 - 2 - (array.length*2))/(array.length));
         const class_ = 'array-element';
-        console.log('RENDERING')
         return(
             <div>
                 <div className = 'array-container'>
@@ -75,7 +75,7 @@ export default class SortingVisualizer extends Component{
         }, i * 10)
       }
     
-    // render does not change class of visible elements back to array-element for some reason.
+    // render does not change class of visible elements back to array-element.
     resetExistingElements(){
         let elements = document.getElementsByClassName("array-element array-element-sorted")
           for (var i = elements.length - 1; i >= 0; --i) {
