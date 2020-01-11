@@ -8,7 +8,6 @@ export default class SortingVisualizer extends Component{
         super();
         this.state = {
             array: [],
-            sorted: false,
         };
     }
 
@@ -21,28 +20,37 @@ export default class SortingVisualizer extends Component{
     }
 
     async mergeSortButton(array){
-        if (this.state.sorted){
-            this.setState({sorted: false})
-        }
+        this.resetExistingElements()
+        this.areButtonsActive('N')
+
         let arrayCopy = array.slice()
         const sortingSpeed = this.getSortingSpeed()
 
         let mergeSortInit = new mergeSort(sortingSpeed)
-        await mergeSortInit.mergeSortStart(arrayCopy)
-
-        this.setState({sorted: true})
+        let arraySorted = await mergeSortInit.mergeSortStart(arrayCopy)
+        this.setState({array: arraySorted})
+        this.areButtonsActive('Y')
     }
 
     resetArray(len_){
-        if (this.state.sorted){
-            this.resetExistingElements()
-            this.setState({sorted: false})
-        }
+        this.resetExistingElements()
         const array = []
         for (let i = 0; i < len_; i ++){
             array.push(this.getRandomInt(10, 500))
         }
         this.setState({array})
+    }
+
+    areButtonsActive(yesOrNo){
+        let bool_ = false
+        if (yesOrNo === 'N'){
+            bool_ = true
+        }
+        let buttons = document.getElementsByTagName("button");
+            for (var i = 0; i <= buttons.length - 1; ++i) {
+                buttons[i].disabled = bool_
+              }
+            document.getElementById("arrayLengthSlider").disabled = bool_
     }
 
     getSortingSpeed(){

@@ -1,7 +1,6 @@
 export class mergeSort{
   constructor(sortingSpeed){
     this.sortingSpeed = sortingSpeed
-    console.log(this.sortingSpeed)
   }
 
   mergeSortStart(array){  
@@ -40,7 +39,6 @@ merge(array, left, step) {
       }
     }
     for (let j = left; j <= end; j++) {
-      console.log(j)
       const barStyle = arrayBars[j].style;
       array[j] = temp[j];
       await this.highlightBar(barStyle, temp[j])
