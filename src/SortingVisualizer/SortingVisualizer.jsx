@@ -4,6 +4,7 @@ import {mergeSort} from '../SortingAlgorithms/mergeSort'
 import {quickSort} from '../SortingAlgorithms/quickSort'
 import {bubbleSort} from '../SortingAlgorithms/bubbleSort'
 import {insertionSort} from '../SortingAlgorithms/insertionSort'
+import {resetExistingElements, areButtonsActive, getSortingSpeed} from '../SortingAlgorithms/utilities'
 
 
 export default class SortingVisualizer extends Component{
@@ -18,81 +19,42 @@ export default class SortingVisualizer extends Component{
         this.resetArray(100)
     }
 
-    async insertionSortButton(array){
-        this.resetExistingElements()
-        this.areButtonsActive('N')
+    insertionSortButton(array){
+        this.sort(insertionSort, array)
+    }
 
+    bubbleSortButton(array){
+        this.sort(bubbleSort, array)
+    }
+
+    quickSortButton(array){
+        this.sort(quickSort, array)
+    }
+
+    mergeSortButton(array){
+        this.sort(mergeSort, array)
+    }
+
+    async sort(method, array){
+        resetExistingElements()
+        areButtonsActive('N')
+    
         let arrayCopy = array.slice()
-        const sortingSpeed = this.getSortingSpeed()
+        const sortingSpeed = getSortingSpeed()
         
-        let insertionSortInit = new insertionSort(sortingSpeed)
-        await insertionSortInit.insertionSortStart(arrayCopy)
+        let sortMethodInit = new method(sortingSpeed)
+        await sortMethodInit.sortStart(arrayCopy)
         this.setState({array: arrayCopy})
-        this.areButtonsActive('Y')
-    }
-
-    async bubbleSortButton(array){
-        this.resetExistingElements()
-        this.areButtonsActive('N')
-
-        let arrayCopy = array.slice()
-        const sortingSpeed = this.getSortingSpeed()
-
-        let bubbleSortInit = new bubbleSort(sortingSpeed)
-        await bubbleSortInit.bubbleSortStart(arrayCopy)
-        this.setState({array: arrayCopy})
-        this.areButtonsActive('Y')
-    }
-
-    async quickSortButton(array){
-        this.resetExistingElements()
-        this.areButtonsActive('N')
-
-        let arrayCopy = array.slice()
-        const sortingSpeed = this.getSortingSpeed()
-
-        let quickSortInit = new quickSort(sortingSpeed)
-        await quickSortInit.quickSortStart(arrayCopy)
-        this.setState({array: arrayCopy})
-        this.areButtonsActive('Y')
-    }
-
-    async mergeSortButton(array){
-        this.resetExistingElements()
-        this.areButtonsActive('N')
-
-        let arrayCopy = array.slice()
-        const sortingSpeed = this.getSortingSpeed()
-
-        let mergeSortInit = new mergeSort(sortingSpeed)
-        await mergeSortInit.mergeSortStart(arrayCopy)
-        this.setState({array: arrayCopy})
-        this.areButtonsActive('Y')
+        areButtonsActive('Y')
     }
 
     resetArray(len_){
-        this.resetExistingElements()
+        resetExistingElements()
         const array = []
         for (let i = 0; i < len_; i ++){
             array.push(this.getRandomInt(10, 500))
         }
         this.setState({array})
-    }
-
-    areButtonsActive(yesOrNo){
-        let bool_ = false
-        if (yesOrNo === 'N'){
-            bool_ = true
-        }
-        let buttons = document.getElementsByTagName("button");
-            for (var i = 0; i <= buttons.length - 1; ++i) {
-                buttons[i].disabled = bool_
-              }
-            document.getElementById("arrayLengthSlider").disabled = bool_
-    }
-
-    getSortingSpeed(){
-        return 100/document.getElementById("arrayLengthSlider").value
     }
 
     // https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
@@ -125,13 +87,4 @@ export default class SortingVisualizer extends Component{
             </div>
             );
     }
-    
-    // render does not change class of visible elements back to array-element.
-    resetExistingElements(){
-        let elements = document.getElementsByClassName("array-element array-element-sorted")
-          for (var i = elements.length - 1; i >= 0; --i) {
-            elements[i].className = "array-element"
-          }
-    }
-
 }

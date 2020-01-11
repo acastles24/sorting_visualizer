@@ -6,7 +6,7 @@ export class mergeSort{
     this.sortingSpeed = sortingSpeed
   }
 
-  mergeSortStart(array){  
+  sortStart(array){  
     return new Promise(async (resolve) => {
     let step = 1;
     while (step < array.length) {

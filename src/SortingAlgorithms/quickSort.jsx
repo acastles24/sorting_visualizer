@@ -6,7 +6,7 @@ export class quickSort{
     this.sortingSpeed = sortingSpeed
   }
 
-  quickSortStart(array){
+  sortStart(array){
       return new Promise(async (resolve) => {
       let stack = [];
       let start = 0;

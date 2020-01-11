@@ -6,7 +6,7 @@ export class insertionSort{
       this.sortingSpeed = sortingSpeed
     }
 
-    insertionSortStart(array){
+    sortStart(array){
         return new Promise(async (resolve) => {
             let arrayBars = document.getElementsByClassName('array-element');
             let barStyle;

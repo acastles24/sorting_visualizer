@@ -51,3 +51,28 @@ export function swap(array, i, j, sortingSpeed){
       resolve()
     })
 }
+
+ // render does not change class of visible elements back to array-element.
+export function resetExistingElements(){
+    let elements = document.getElementsByClassName("array-element array-element-sorted")
+      for (var i = elements.length - 1; i >= 0; --i) {
+        elements[i].className = "array-element"
+      }
+}
+
+export function areButtonsActive(yesOrNo){
+    let bool_ = false
+    if (yesOrNo === 'N'){
+        bool_ = true
+    }
+    let buttons = document.getElementsByTagName("button");
+        for (var i = 0; i <= buttons.length - 1; ++i) {
+            buttons[i].disabled = bool_
+          }
+        document.getElementById("arrayLengthSlider").disabled = bool_
+}
+
+
+export function getSortingSpeed(){
+    return 100/document.getElementById("arrayLengthSlider").value
+}

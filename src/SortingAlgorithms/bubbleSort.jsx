@@ -6,7 +6,7 @@ export class bubbleSort{
       this.sortingSpeed = sortingSpeed
     }
 
-    bubbleSortStart(array){
+    sortStart(array){
         return new Promise(async (resolve) => {
             let swapped = true;
             while (swapped){
