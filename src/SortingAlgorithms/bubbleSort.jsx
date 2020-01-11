@@ -22,7 +22,4 @@ export class bubbleSort{
             resolve()
         })
     }
-
-    
-
 }

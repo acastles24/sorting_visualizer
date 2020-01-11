@@ -3,6 +3,7 @@ import './SortingVisualizer.css'
 import {mergeSort} from '../SortingAlgorithms/mergeSort'
 import {quickSort} from '../SortingAlgorithms/quickSort'
 import {bubbleSort} from '../SortingAlgorithms/bubbleSort'
+import {insertionSort} from '../SortingAlgorithms/insertionSort'
 
 
 export default class SortingVisualizer extends Component{
@@ -15,6 +16,19 @@ export default class SortingVisualizer extends Component{
 
     componentDidMount(){
         this.resetArray(100)
+    }
+
+    async insertionSortButton(array){
+        this.resetExistingElements()
+        this.areButtonsActive('N')
+
+        let arrayCopy = array.slice()
+        const sortingSpeed = this.getSortingSpeed()
+
+        let insertionSortInit = new insertionSort(sortingSpeed)
+        await insertionSortInit.insertionSortStart(arrayCopy)
+        this.setState({array: arrayCopy})
+        this.areButtonsActive('Y')
     }
 
     async bubbleSortButton(array){
@@ -104,6 +118,7 @@ export default class SortingVisualizer extends Component{
                 <button onClick={() => this.mergeSortButton(this.state.array)}>Merge Sort</button>
                 <button onClick={() => this.quickSortButton(this.state.array)}>Quick Sort</button>
                 <button onClick={() => this.bubbleSortButton(this.state.array)}>Bubble Sort</button>
+                <button onClick={() => this.insertionSortButton(this.state.array)}>Insertion Sort</button>
                 <input type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" 
                 defaultValue = {100} onInput = 
                 {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>
