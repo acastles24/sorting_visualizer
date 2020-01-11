@@ -76,6 +76,7 @@ export default class SortingVisualizer extends Component{
                     </div>
                     ))}
                 </div>
+                <div className = 'bottom-rectangle'></div>
                 <button onClick={() => this.resetArray(this.state.array.length)}>Generate Random Array</button>
                 <button onClick={() => this.mergeSortButton(this.state.array)}>Merge Sort</button>
                 <button onClick={() => this.quickSortButton(this.state.array)}>Quick Sort</button>
