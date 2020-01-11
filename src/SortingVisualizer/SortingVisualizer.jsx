@@ -16,14 +16,18 @@ export default class SortingVisualizer extends Component{
         this.resetArray(100)
     }
 
-    quickSortButton(array){
-        this.resetExistingElements();
+    async quickSortButton(array){
+        this.resetExistingElements()
+        this.areButtonsActive('N')
+
         let arrayCopy = array.slice()
         const sortingSpeed = this.getSortingSpeed()
-        console.log(arrayCopy)
 
         let quickSortInit = new quickSort(sortingSpeed)
-        quickSortInit.quickSortStart(arrayCopy)
+        await quickSortInit.quickSortStart(arrayCopy)
+        this.setState({array: arrayCopy})
+        this.areButtonsActive('Y')
+        console.log(this.state.array)
     }
 
     async mergeSortButton(array){

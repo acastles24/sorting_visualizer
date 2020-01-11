@@ -7,6 +7,7 @@ export class quickSort{
   }
 
   quickSortStart(array){
+      return new Promise(async (resolve) => {
       let stack = [];
       let start = 0;
       let end = array.length - 1;
@@ -18,8 +19,7 @@ export class quickSort{
           start = currIdx[0];
           end = currIdx[1];
 
-          let pivot = this.partition(array, start, end);
-          console.log(pivot)
+          let pivot = await this.partition(array, start, end);
 
           if (pivot - 1 > start){
               stack.push([start, pivot - 1]);
@@ -28,26 +28,46 @@ export class quickSort{
           if (pivot + 1 < end){
               stack.push([pivot + 1, end]);
           }
-          console.log(array)
       }
+
+      await animationScaledTimeout()
+      resolve();
+      })
   }
 
   partition(array, start, end){
-      const pivot = array[end];
-      let pIdx = start;
-      for (let i = start; i < end; i++){
-          if (array[i] <= pivot){
-              this.swap(array, i, pIdx);
-              pIdx++;
-          }
-      }
-      this.swap(array, pIdx, end)
-      return pIdx
+      return new Promise(async (resolve) => {
+        const pivot = array[end];
+        let pIdx = start;
+        for (let i = start; i < end; i++){
+            if (array[i] <= pivot){
+                await this.swap(array, i, pIdx);
+                pIdx++;
+            }
+        }
+        await this.swap(array, pIdx, end);
+        resolve(pIdx);
+      })
   }
 
   swap(array, i, j){
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp
+      return new Promise(async(resolve) => {
+        let arrayBars = document.getElementsByClassName('array-element');
+        const temp = array[i];
+
+        const barStyleI = arrayBars[i].style;
+        const barStyleJ = arrayBars[j].style;
+
+        await highlightBar(barStyleI, array[j], this.sortingSpeed)
+        await resetBarColor(barStyleI, this.sortingSpeed)
+
+        await highlightBar(barStyleJ, temp, this.sortingSpeed)
+        await resetBarColor(barStyleJ, this.sortingSpeed)
+
+        array[i] = array[j];
+        array[j] = temp
+
+        resolve()
+      })
   }
 }

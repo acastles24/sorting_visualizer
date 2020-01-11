@@ -10,7 +10,7 @@ export function highlightBar(barStyle, value, speed){
 
 export function resetBarColor(barStyle, speed){
     return new Promise((resolve) => {
-    setTimeout(() => {
+        setTimeout(() => {
         barStyle.backgroundColor = 'black';
         resolve()
     }, speed)
