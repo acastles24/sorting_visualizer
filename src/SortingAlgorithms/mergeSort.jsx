@@ -18,7 +18,7 @@ export class mergeSort{
       step *= 2;
   }
   await animationScaledTimeout()
-  resolve(array)
+  resolve()
   })
 }
 

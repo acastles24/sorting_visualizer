@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import './SortingVisualizer.css'
 import {mergeSort} from '../SortingAlgorithms/mergeSort'
+import {quickSort} from '../SortingAlgorithms/quickSort'
 
 
 export default class SortingVisualizer extends Component{
@@ -15,8 +16,14 @@ export default class SortingVisualizer extends Component{
         this.resetArray(100)
     }
 
-    quickSortButton(){
+    quickSortButton(array){
+        this.resetExistingElements();
+        let arrayCopy = array.slice()
+        const sortingSpeed = this.getSortingSpeed()
+        console.log(arrayCopy)
 
+        let quickSortInit = new quickSort(sortingSpeed)
+        quickSortInit.quickSortStart(arrayCopy)
     }
 
     async mergeSortButton(array){
@@ -27,8 +34,8 @@ export default class SortingVisualizer extends Component{
         const sortingSpeed = this.getSortingSpeed()
 
         let mergeSortInit = new mergeSort(sortingSpeed)
-        let arraySorted = await mergeSortInit.mergeSortStart(arrayCopy)
-        this.setState({array: arraySorted})
+        await mergeSortInit.mergeSortStart(arrayCopy)
+        this.setState({array: arrayCopy})
         this.areButtonsActive('Y')
     }
 
