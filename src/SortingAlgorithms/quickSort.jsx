@@ -1,4 +1,4 @@
-import {highlightBar, resetBarColor, animationScaledTimeout} from './utilities'
+import {animationScaledTimeout, swap} from './utilities'
 
 
 export class quickSort{
@@ -41,33 +41,12 @@ export class quickSort{
         let pIdx = start;
         for (let i = start; i < end; i++){
             if (array[i] <= pivot){
-                await this.swap(array, i, pIdx);
+                await swap(array, i, pIdx, this.sortingSpeed);
                 pIdx++;
             }
         }
-        await this.swap(array, pIdx, end);
+        await swap(array, pIdx, end, this.sortingSpeed);
         resolve(pIdx);
-      })
-  }
-
-  swap(array, i, j){
-      return new Promise(async(resolve) => {
-        let arrayBars = document.getElementsByClassName('array-element');
-        const temp = array[i];
-
-        const barStyleI = arrayBars[i].style;
-        const barStyleJ = arrayBars[j].style;
-
-        await highlightBar(barStyleI, array[j], this.sortingSpeed)
-        await resetBarColor(barStyleI, this.sortingSpeed)
-
-        await highlightBar(barStyleJ, temp, this.sortingSpeed)
-        await resetBarColor(barStyleJ, this.sortingSpeed)
-
-        array[i] = array[j];
-        array[j] = temp
-
-        resolve()
       })
   }
 }

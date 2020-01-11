@@ -29,3 +29,25 @@ export function animationScaledTimeout(){
         }, 2000)
     })
 }
+
+
+export function swap(array, i, j, sortingSpeed){
+    return new Promise(async(resolve) => {
+      let arrayBars = document.getElementsByClassName('array-element');
+      const temp = array[i];
+
+      const barStyleI = arrayBars[i].style;
+      const barStyleJ = arrayBars[j].style;
+
+      await highlightBar(barStyleI, array[j], sortingSpeed)
+      await resetBarColor(barStyleI, sortingSpeed)
+
+      await highlightBar(barStyleJ, temp, sortingSpeed)
+      await resetBarColor(barStyleJ, sortingSpeed)
+
+      array[i] = array[j];
+      array[j] = temp
+
+      resolve()
+    })
+}

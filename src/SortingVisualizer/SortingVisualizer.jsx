@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './SortingVisualizer.css'
 import {mergeSort} from '../SortingAlgorithms/mergeSort'
 import {quickSort} from '../SortingAlgorithms/quickSort'
+import {bubbleSort} from '../SortingAlgorithms/bubbleSort'
 
 
 export default class SortingVisualizer extends Component{
@@ -16,6 +17,19 @@ export default class SortingVisualizer extends Component{
         this.resetArray(100)
     }
 
+    async bubbleSortButton(array){
+        this.resetExistingElements()
+        this.areButtonsActive('N')
+
+        let arrayCopy = array.slice()
+        const sortingSpeed = this.getSortingSpeed()
+
+        let bubbleSortInit = new bubbleSort(sortingSpeed)
+        await bubbleSortInit.bubbleSortStart(arrayCopy)
+        this.setState({array: arrayCopy})
+        this.areButtonsActive('Y')
+    }
+
     async quickSortButton(array){
         this.resetExistingElements()
         this.areButtonsActive('N')
@@ -27,7 +41,6 @@ export default class SortingVisualizer extends Component{
         await quickSortInit.quickSortStart(arrayCopy)
         this.setState({array: arrayCopy})
         this.areButtonsActive('Y')
-        console.log(this.state.array)
     }
 
     async mergeSortButton(array){
@@ -90,6 +103,7 @@ export default class SortingVisualizer extends Component{
                 <button onClick={() => this.resetArray(this.state.array.length)}>Generate Random Array</button>
                 <button onClick={() => this.mergeSortButton(this.state.array)}>Merge Sort</button>
                 <button onClick={() => this.quickSortButton(this.state.array)}>Quick Sort</button>
+                <button onClick={() => this.bubbleSortButton(this.state.array)}>Bubble Sort</button>
                 <input type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" 
                 defaultValue = {100} onInput = 
                 {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>
