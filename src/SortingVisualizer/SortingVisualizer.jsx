@@ -24,7 +24,7 @@ export default class SortingVisualizer extends Component{
 
         let arrayCopy = array.slice()
         const sortingSpeed = this.getSortingSpeed()
-
+        
         let insertionSortInit = new insertionSort(sortingSpeed)
         await insertionSortInit.insertionSortStart(arrayCopy)
         this.setState({array: arrayCopy})
