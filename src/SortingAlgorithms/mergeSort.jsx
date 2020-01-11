@@ -1,3 +1,6 @@
+import {highlightBar, resetBarColor, animationScaledTimeout} from './utilities'
+
+
 export class mergeSort{
   constructor(sortingSpeed){
     this.sortingSpeed = sortingSpeed
@@ -14,7 +17,7 @@ export class mergeSort{
       }
       step *= 2;
   }
-  await this.animationScaledTimeout()
+  await animationScaledTimeout()
   resolve(array)
   })
 }
@@ -41,43 +44,10 @@ merge(array, left, step) {
     for (let j = left; j <= end; j++) {
       const barStyle = arrayBars[j].style;
       array[j] = temp[j];
-      await this.highlightBar(barStyle, temp[j])
-      await this.resetBarColor(barStyle, temp[j])
+      await highlightBar(barStyle, temp[j], this.sortingSpeed)
+      await resetBarColor(barStyle, this.sortingSpeed)
     }
     resolve()
   })
 }
-
-
-  highlightBar(barStyle, value){
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        barStyle.backgroundColor = 'red';
-        barStyle.height = `${value}px`;
-        resolve()
-      }, this.sortingSpeed)
-    })
-  }
-
-  resetBarColor(barStyle){
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        barStyle.backgroundColor = 'black';
-        resolve()
-      }, this.sortingSpeed)
-    })
-  }
-
-
-  animationScaledTimeout(){
-    return new Promise((resolve) => {
-      let elements = document.getElementsByClassName("array-element")
-            for (var i = elements.length - 1; i >= 0; --i) {
-              elements[i].className = "array-element array-element-sorted"
-            }
-      setTimeout(() => {
-        resolve()
-      }, 2000)
-    })
-  }
 }
