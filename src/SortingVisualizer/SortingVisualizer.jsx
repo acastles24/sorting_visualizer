@@ -76,21 +76,32 @@ export default class SortingVisualizer extends Component{
                     ))}
                 </div>
                 <div className = 'button-bar'>
-                    <div className = 'slider-container'>
+                    <div className = 'button-container'>
                         <button className = 'sorting-button' onClick={() => this.mergeSortButton(this.state.array)}>Merge Sort</button>
                     </div>
-                    <button className = 'sorting-button' onClick={() => this.quickSortButton(this.state.array)}>Quick Sort</button>
-                    <button className = 'sorting-button' onClick={() => this.bubbleSortButton(this.state.array)}>Bubble Sort</button>
-                    <button className = 'sorting-button' onClick={() => this.insertionSortButton(this.state.array)}>Insertion Sort</button>
-                    <button className = 'sorting-button' onClick={() => this.resetArray(this.state.array.length)}>Generate Random Array</button>
-                    <div className = 'slider-container'>
+                    <div className = 'button-container'>
+                        <button className = 'sorting-button' onClick={() => this.quickSortButton(this.state.array)}>Quick Sort</button>
+                    </div>
+                    <div className = 'button-container'>
+                        <button className = 'sorting-button' onClick={() => this.bubbleSortButton(this.state.array)}>Bubble Sort</button>
+                    </div>
+                    <div className = 'button-container'>
+                        <button className = 'sorting-button' onClick={() => this.insertionSortButton(this.state.array)}>Insertion Sort</button>
+                    </div>
+                    <div className = 'button-container'>
+                        <button className = 'sorting-button' onClick={() => this.insertionSortButton(this.state.array)}>Insertion Sort</button>
+                    </div>
+                    <div className = 'button-container'>
+                        <button className = 'sorting-button' onClick={() => this.resetArray(this.state.array.length)}>Generate Random Array</button>
+                    </div>
+                    <div className = 'button-container'>
+                        <div style = {{position: 'relative',  fontSize: '14px'}}>Array Size</div>
                         <input className = 'slider' type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" 
                             defaultValue = {100} onInput = 
                             {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>
                     </div>
                 </div>
                 <div className = 'bottom-rectangle'></div>
-                
             </div>
             );
     }
