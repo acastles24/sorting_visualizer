@@ -68,6 +68,7 @@ export function areButtonsActive(yesOrNo){
     let buttons = document.getElementsByTagName("button");
         for (var i = 0; i <= buttons.length - 1; ++i) {
             buttons[i].disabled = bool_
+            buttons[i].style.backgroundColor = 'rgb(0, 255, 157)'
           }
         document.getElementById("arrayLengthSlider").disabled = bool_
 }
