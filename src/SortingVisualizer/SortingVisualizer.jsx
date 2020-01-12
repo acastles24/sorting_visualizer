@@ -67,24 +67,30 @@ export default class SortingVisualizer extends Component{
     render(){
         const {array} = this.state;
         const width = ((1200 - 2 - (array.length*2))/(array.length));
-        const class_ = 'array-element';
         return(
             <div>
                 <div className = 'array-container'>
                     {array.map((value, idX) => (
-                    <div className = {class_}  key = {idX} style = {{backgroundColor: 'black', width: `${width}px`, height: `${value}px`}}>
+                    <div className = 'array-element'  key = {idX} style = {{backgroundColor: 'black', width: `${width}px`, height: `${value}px`}}>
                     </div>
                     ))}
                 </div>
+                <div className = 'button-bar'>
+                    <div className = 'slider-container'>
+                        <button className = 'sorting-button' onClick={() => this.mergeSortButton(this.state.array)}>Merge Sort</button>
+                    </div>
+                    <button className = 'sorting-button' onClick={() => this.quickSortButton(this.state.array)}>Quick Sort</button>
+                    <button className = 'sorting-button' onClick={() => this.bubbleSortButton(this.state.array)}>Bubble Sort</button>
+                    <button className = 'sorting-button' onClick={() => this.insertionSortButton(this.state.array)}>Insertion Sort</button>
+                    <button className = 'sorting-button' onClick={() => this.resetArray(this.state.array.length)}>Generate Random Array</button>
+                    <div className = 'slider-container'>
+                        <input className = 'slider' type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" 
+                            defaultValue = {100} onInput = 
+                            {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>
+                    </div>
+                </div>
                 <div className = 'bottom-rectangle'></div>
-                <button onClick={() => this.resetArray(this.state.array.length)}>Generate Random Array</button>
-                <button onClick={() => this.mergeSortButton(this.state.array)}>Merge Sort</button>
-                <button onClick={() => this.quickSortButton(this.state.array)}>Quick Sort</button>
-                <button onClick={() => this.bubbleSortButton(this.state.array)}>Bubble Sort</button>
-                <button onClick={() => this.insertionSortButton(this.state.array)}>Insertion Sort</button>
-                <input type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" 
-                defaultValue = {100} onInput = 
-                {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>
+                
             </div>
             );
     }
