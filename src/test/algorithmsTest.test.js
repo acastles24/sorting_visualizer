@@ -10,12 +10,13 @@ import * as utilities from '../SortingAlgorithms/utilities'
 //  });
 
 describe('mergeSort', () => {
-    it('should return sorted array', async () => {
+    it('should return sorted array', async() => {
         utilities.highlightBar = jest.fn();
+        utilities.resetBarColor = jest.fn();
+        utilities.animationScaledTimeout = jest.fn();
         const mergeSortInit = new mergeSort(1);
         const array = [5,3,2,4,1];
-        const arrayCopy = array.slice()
-        await mergeSortInit.sortStart([5,3,2,4,1]);
-        expect(arrayCopy).toBe([1,2,3,4,5]);
+        await mergeSortInit.sortStart(array);
+        expect(array).toStrictEqual([1,2,3,4,5]);
     });
 })
