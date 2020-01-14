@@ -1,11 +1,22 @@
 import {animationScaledTimeout, highlightSwappedElements, swap} from './utilities'
 
 
+/**
+ * Quick sort class.
+ */
 export class quickSort{
+    /**
+     * 
+     * @param {int} sortingSpeed - sorting speed (delay) in ms
+     */
   constructor(sortingSpeed){
     this.sortingSpeed = sortingSpeed
   }
 
+  /**
+   * Main method for sort class.
+   * @param {array} array - array to sort
+   */
   sortStart(array){
       return new Promise(async (resolve) => {
       let stack = [];
@@ -31,10 +42,17 @@ export class quickSort{
       }
 
       await animationScaledTimeout()
+
       resolve();
       })
   }
 
+  /**
+   * Partitions array using pivot method. Returns pivot index
+   * @param {array} array - current array being sorted
+   * @param {int} start - index of start of partitioned array
+   * @param {int} end - end of partition array (used as initial pivot)
+   */
   partition(array, start, end){
       return new Promise(async (resolve) => {
         const pivot = array[end];

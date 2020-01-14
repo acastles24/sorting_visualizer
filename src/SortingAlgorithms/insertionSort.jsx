@@ -1,11 +1,21 @@
 import {animationScaledTimeout, highlightBar, resetBarColor} from './utilities'
 
-
+/**
+ * Insertion sort class.
+ */
 export class insertionSort{
+    /**
+     * 
+     * @param {int} sortingSpeed - sorting speed (delay) in ms.
+     */
     constructor(sortingSpeed){
       this.sortingSpeed = sortingSpeed
     }
 
+   /**
+   * Main method for sort class.
+   * @param {array} array - array to sort
+   */
     sortStart(array){
         return new Promise(async (resolve) => {
             for (let i = 0; i < array.length; i++){

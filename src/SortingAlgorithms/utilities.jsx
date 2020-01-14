@@ -1,3 +1,9 @@
+/**
+ * Highlights and changes height of bar corresponding to array element being changed.
+ * @param {int} index - index in array of element being changed
+ * @param {int} value - new value of array element
+ * @param {int} speed - speed (delay) of operation in ms
+ */
 export function highlightBar(index, value, speed){
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -10,6 +16,11 @@ export function highlightBar(index, value, speed){
     })
 }
 
+/**
+ * Resets bar color to black.
+ * @param {int} index - index in array of element being changed
+ * @param {int} speed - speed (delay) of operation in ms
+ */
 export function resetBarColor(index, speed){
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -21,7 +32,9 @@ export function resetBarColor(index, speed){
     })
 }
 
-
+/**
+ * Changes class of HTML elements to sorted type which starts 2 sec color change animation.
+ */
 export function animationScaledTimeout(){
     return new Promise((resolve) => {
         let elements = document.getElementsByClassName("array-element")
@@ -34,6 +47,14 @@ export function animationScaledTimeout(){
     })
 }
 
+
+/**
+ * Highlights and resets two elements that are being swapped during sorting.
+ * @param {array} array - current array during sorting
+ * @param {int} i - first index being swapped
+ * @param {int} j - second index being swapped
+ * @param {int} sortingSpeed - speed (delay) of operation in ms
+ */
 export function highlightSwappedElements(array, i, j, sortingSpeed){
   return new Promise(async(resolve) => {
   const temp = array[i];
@@ -48,7 +69,12 @@ export function highlightSwappedElements(array, i, j, sortingSpeed){
 })
 }
 
-
+/**
+ * Swaps two elements in array
+ * @param {array} array - current element being sorted
+ * @param {int} i  - first element being swapped
+ * @param {int} j - second element being swapped
+ */
 export function swap(array, i, j){
       const temp = array[i];
 
@@ -56,7 +82,10 @@ export function swap(array, i, j){
       array[j] = temp
 }
 
- // render does not change class of visible elements back to array-element.
+ /**
+  * Resets existing elements to original class name.
+  * render does not change class of visible elements back to array-element.
+  */
 export function resetExistingElements(){
     let elements = document.getElementsByClassName("array-element array-element-sorted")
       for (var i = elements.length - 1; i >= 0; --i) {
@@ -64,6 +93,10 @@ export function resetExistingElements(){
       }
 }
 
+/**
+ * Changes buttons to active with 'Y' or inactive with 'N'.
+ * @param {str} yesOrNo 
+ */
 export function areButtonsActive(yesOrNo){
     let bool_ = false
     if (yesOrNo === 'N'){
@@ -77,7 +110,10 @@ export function areButtonsActive(yesOrNo){
         document.getElementById("arrayLengthSlider").disabled = bool_
 }
 
-
+/**
+ * Calculates sorting speed (delay) by dividing current array length from slider.
+ * Speed inversely proportional to length in ms.
+ */
 export function getSortingSpeed(){
     return 100/document.getElementById("arrayLengthSlider").value
 }

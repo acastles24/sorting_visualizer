@@ -36,20 +36,29 @@ export default class SortingVisualizer extends Component{
     mergeSortButton(array){
         this.sort(mergeSort, array)
     }
-
-    async sort(method, array){
+    
+    /**
+     * Sorts array using chosen method. Creates copy of array to avoid re-rendering.
+     * @param {class} method - class of clicked sorting method
+     * @param {*} array - current array to be sorted
+     */
+    async sort(sortingMethod, array){
         resetExistingElements()
         areButtonsActive('N')
     
         let arrayCopy = array.slice()
         const sortingSpeed = getSortingSpeed()
         
-        let sortMethodInit = new method(sortingSpeed)
+        let sortMethodInit = new sortingMethod(sortingSpeed)
         await sortMethodInit.sortStart(arrayCopy)
         this.setState({array: arrayCopy})
         areButtonsActive('Y')
     }
 
+    /**
+     * Creates random array of given length and sets state.
+     * @param {int} len_ - length of random array
+     */
     resetArray(len_){
         resetExistingElements()
         const array = []

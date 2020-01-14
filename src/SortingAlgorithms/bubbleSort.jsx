@@ -1,11 +1,21 @@
 import {swap, animationScaledTimeout, highlightSwappedElements} from './utilities'
 
-
+/**
+ * Bubble sort class.
+ */
 export class bubbleSort{
+    /**
+     * 
+     * @param {int} sortingSpeed - sorting speed (delay) in ms.
+     */
     constructor(sortingSpeed){
       this.sortingSpeed = sortingSpeed
     }
 
+    /**
+     * Main method for sort class.
+     * @param {array} array - array to sort
+     */
     sortStart(array){
         return new Promise(async (resolve) => {
             let swapped = true;
