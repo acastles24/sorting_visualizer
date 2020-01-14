@@ -1,4 +1,4 @@
-import {swap, animationScaledTimeout} from './utilities'
+import {swap, animationScaledTimeout, highlightSwappedElements} from './utilities'
 
 
 export class bubbleSort{
@@ -13,7 +13,8 @@ export class bubbleSort{
                 swapped = false;
                 for(let i = 0; i < array.length; i++){
                     if(array[i] && array[i + 1] && array[i] > array[i + 1]) {
-                        await swap(array, i, i + 1, this.sortingSpeed);
+                        await highlightSwappedElements(array, i, i+1, this.sortingSpeed)
+                        swap(array, i, i + 1);
                         swapped = true
                     }
                 }

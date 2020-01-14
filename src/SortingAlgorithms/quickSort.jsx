@@ -1,4 +1,4 @@
-import {animationScaledTimeout, swap} from './utilities'
+import {animationScaledTimeout, highlightSwappedElements, swap} from './utilities'
 
 
 export class quickSort{
@@ -41,11 +41,13 @@ export class quickSort{
         let pIdx = start;
         for (let i = start; i < end; i++){
             if (array[i] <= pivot){
-                await swap(array, i, pIdx, this.sortingSpeed);
+                await highlightSwappedElements(array, i, pIdx, this.sortingSpeed)
+                swap(array, i, pIdx);
                 pIdx++;
             }
         }
-        await swap(array, pIdx, end, this.sortingSpeed);
+        await highlightSwappedElements(array, pIdx, end, this.sortingSpeed)
+        swap(array, pIdx, end);
         resolve(pIdx);
       })
   }

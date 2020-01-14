@@ -1,4 +1,4 @@
-import {highlightBar, resetBarColor, animationScaledTimeout} from './utilities'
+import {highlightBar, resetBarColor, animationScaledTimeout, getArrayBars} from './utilities'
 
 
 export class mergeSort{
@@ -24,7 +24,6 @@ export class mergeSort{
 
 merge(array, left, step) {
   return new Promise(async (resolve) => {
-    let arrayBars = document.getElementsByClassName('array-element');
     let right = left + step;
     let end = Math.min(left + step * 2 - 1, array.length - 1);
     let leftMoving = left;
@@ -42,10 +41,9 @@ merge(array, left, step) {
       }
     }
     for (let j = left; j <= end; j++) {
-      const barStyle = arrayBars[j].style;
       array[j] = temp[j];
-      await highlightBar(barStyle, temp[j], this.sortingSpeed)
-      await resetBarColor(barStyle, this.sortingSpeed)
+      await highlightBar(j, temp[j], this.sortingSpeed)
+      await resetBarColor(j, this.sortingSpeed)
     }
     resolve()
   })

@@ -1,16 +1,20 @@
-export function highlightBar(barStyle, value, speed){
+export function highlightBar(index, value, speed){
     return new Promise((resolve) => {
       setTimeout(() => {
+        const arrayBars = document.getElementsByClassName('array-element');
+        const barStyle = arrayBars[index].style
         barStyle.backgroundColor = 'red';
         barStyle.height = `${value}px`;
         resolve()
       }, speed)
     })
-  }
+}
 
-export function resetBarColor(barStyle, speed){
+export function resetBarColor(index, speed){
     return new Promise((resolve) => {
         setTimeout(() => {
+        const arrayBars = document.getElementsByClassName('array-element');
+        const barStyle = arrayBars[index].style
         barStyle.backgroundColor = 'black';
         resolve()
     }, speed)
@@ -30,26 +34,26 @@ export function animationScaledTimeout(){
     })
 }
 
+export function highlightSwappedElements(array, i, j, sortingSpeed){
+  return new Promise(async(resolve) => {
+  const temp = array[i];
+  
+  await highlightBar(i, array[j], sortingSpeed)
+  await resetBarColor(i, sortingSpeed)
 
-export function swap(array, i, j, sortingSpeed){
-    return new Promise(async(resolve) => {
-      let arrayBars = document.getElementsByClassName('array-element');
+  await highlightBar(j, temp, sortingSpeed)
+  await resetBarColor(j, sortingSpeed)
+
+  resolve()
+})
+}
+
+
+export function swap(array, i, j){
       const temp = array[i];
-
-      const barStyleI = arrayBars[i].style;
-      const barStyleJ = arrayBars[j].style;
-
-      await highlightBar(barStyleI, array[j], sortingSpeed)
-      await resetBarColor(barStyleI, sortingSpeed)
-
-      await highlightBar(barStyleJ, temp, sortingSpeed)
-      await resetBarColor(barStyleJ, sortingSpeed)
 
       array[i] = array[j];
       array[j] = temp
-
-      resolve()
-    })
 }
 
  // render does not change class of visible elements back to array-element.
