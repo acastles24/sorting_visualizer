@@ -5,6 +5,7 @@ import {quickSort} from '../SortingAlgorithms/quickSort'
 import {bubbleSort} from '../SortingAlgorithms/bubbleSort'
 import {insertionSort} from '../SortingAlgorithms/insertionSort'
 import {resetExistingElements, areButtonsActive, getSortingSpeed} from '../SortingAlgorithms/utilities'
+import {getRandomInt} from '../SortingVisualizer/utilities'
 
 const BUTTON_SELECT_COLOR = 'rgb(15, 175, 224)'
 
@@ -53,18 +54,10 @@ export default class SortingVisualizer extends Component{
         resetExistingElements()
         const array = []
         for (let i = 0; i < len_; i ++){
-            array.push(this.getRandomInt(10, 500))
+            array.push(getRandomInt(10, 500))
         }
         this.setState({array})
     }
-
-    // https://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range
-    getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
     render(){
         const {array} = this.state;
         const width = ((1200 - 2 - (array.length*2))/(array.length));

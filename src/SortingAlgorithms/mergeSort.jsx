@@ -1,4 +1,4 @@
-import {highlightBar, resetBarColor, animationScaledTimeout, getArrayBars} from './utilities'
+import {highlightBar, resetBarColor, animationScaledTimeout} from './utilities'
 
 
 export class mergeSort{
