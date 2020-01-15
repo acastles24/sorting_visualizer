@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import MetaTags from 'react-meta-tags'
 import './SortingVisualizer.css'
 import {mergeSort} from '../SortingAlgorithms/mergeSort'
 import {quickSort} from '../SortingAlgorithms/quickSort'
@@ -72,6 +73,9 @@ export default class SortingVisualizer extends Component{
         const width = ((1200 - 2 - (array.length*2))/(array.length));
         return(
             <div>
+                <MetaTags>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+                </MetaTags>
                 <div className = 'array-container'>
                     {array.map((value, idX) => (
                     <div className = 'array-element'  key = {idX} style = {{backgroundColor: 'black', width: `${width}px`, height: `${value}px`}}>
@@ -95,7 +99,7 @@ export default class SortingVisualizer extends Component{
                         <button id='randomButton' className = 'sorting-button' onClick={() => this.resetArray(this.state.array.length)}>Generate Random Array</button>
                     </div>
                     <div className = 'button-container'>
-                        <div style = {{position: 'relative',  fontSize: '14px'}}>Array Size</div>
+                        <div id = 'sliderLabel' className = 'slider-label' >Array Size</div>
                         <input className = 'slider' type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" 
                             defaultValue = {100} onInput = 
                             {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>

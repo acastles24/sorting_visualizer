@@ -1,8 +1,8 @@
 .array-container{
     position: absolute;
-    left: 100px;
-    bottom: 100px;
-    width: 1200px;
+    left: 5%;
+    bottom: 15%;
+    width: 90%;
 }
 
 .bottom-rectangle{
@@ -10,7 +10,8 @@
     position: absolute;
     bottom: 0%;
     width: 100%;
-    height: 102px;
+    height: 15%;
+    margin: 0;
 }
 
 .button-bar{
@@ -24,16 +25,17 @@
     position: relative;
     height: 100%;
     width: 12%;
-    margin: 0px 2px 0px;
+    margin: 0px 0.1vw 0px;
     display: inline-block;
     vertical-align: top;
+
 }
 
 .slider{
     -webkit-appearance: none;
-    top: 10px;
+    top: 45%;
     height: 10%;
-    margin: 0px 10px 0px;
+    margin: 0px 0.2vw 0px;
     opacity: 0.8;
     outline: none;
     background-color: grey;
@@ -46,8 +48,8 @@
 .slider::-webkit-slider-thumb {
      /* Override default look */
     appearance: none;
-    width: 20px; /* Set a specific slider handle width */
-    height: 20px; /* Slider handle height */
+    width: 1.2vw; /* Set a specific slider handle width */
+    height: 1.2vw; /* Slider handle height */
     background: rgb(0, 255, 157); /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
@@ -59,17 +61,26 @@
     cursor: pointer; /* Cursor on hover */
 }
 
+.slider-label{
+    position: relative;
+    font-family: Arial Black, Gadget, sans-serif;
+    font-size: 1vw;
+    text-align:  center;
+}
+
 .sorting-button{
     height: 100%;
     width: 100%;
-    font-size: 14px;
+    font-size: 13h;
     margin: 0px 2px 0px;
     overflow-wrap: normal;
     background-color: rgb(0, 255, 157);
     border-radius: 20%;
+    -webkit-appearance: none;
     -webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;
     cursor: pointer;
+    font-family: Arial Black, Gadget, sans-serif;
 }
 
 .sorting-button:hover{
@@ -78,13 +89,15 @@
 
 .array-element{
     display: inline-block;
-    margin: 0px 1px 0px;
+    vertical-align: bottom;
+    margin: 0px .08% 0px .08%;
 }
 
 .array-element-sorted{
     animation-name: sortedAnimation;
     animation-duration: 2s;
     animation-fill-mode: forwards;
+    
 
 }
 
