@@ -64,23 +64,25 @@ export default class SortingVisualizer extends Component{
         resetExistingElements()
         const array = []
         for (let i = 0; i < len_; i ++){
-            array.push(getRandomInt(10, 500))
+            array.push(getRandomInt(5, 100))
         }
         this.setState({array})
     }
     render(){
         const {array} = this.state;
-        const width = ((1200 - 2 - (array.length*2))/(array.length));
+        const width = ((90 - 0.2 - (array.length*0.2))/(array.length));
+        console.log(width)
         return(
             <div>
                 <MetaTags>
                     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
                 </MetaTags>
-                <div className = 'array-container'>
-                    {array.map((value, idX) => (
-                    <div className = 'array-element'  key = {idX} style = {{backgroundColor: 'black', width: `${width}px`, height: `${value}px`}}>
+                <div id = 'arrayContainer' className = 'array-container'>
+                    <div className = 'array-wrapper'>
+                        {array.map((value, idX) => (
+                        <div className = 'array-element'  key = {idX} style = {{backgroundColor: 'black', width: `${width}%`, height: `${value}%`}}></div>
+                        ))}
                     </div>
-                    ))}
                 </div>
                 <div className = 'button-bar'>
                     <div className = 'button-container'>
@@ -99,7 +101,7 @@ export default class SortingVisualizer extends Component{
                         <button id='randomButton' className = 'sorting-button' onClick={() => this.resetArray(this.state.array.length)}>Generate Random Array</button>
                     </div>
                     <div className = 'button-container'>
-                        <div id = 'sliderLabel' className = 'slider-label' >Array Size</div>
+                        <div id = 'sliderLabel' className = 'slider-label'>Array Size</div>
                         <input className = 'slider' type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" 
                             defaultValue = {100} onInput = 
                             {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>

@@ -10,7 +10,7 @@ export function highlightBar(index, value, speed){
         const arrayBars = document.getElementsByClassName('array-element');
         const barStyle = arrayBars[index].style
         barStyle.backgroundColor = 'red';
-        barStyle.height = `${value}px`;
+        barStyle.height = `${value}%`;
         resolve()
       }, speed)
     })

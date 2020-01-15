@@ -1,8 +1,33 @@
 .array-container{
     position: absolute;
+    display: table;
     left: 5%;
     bottom: 15%;
     width: 90%;
+    height: 60%;
+}
+
+.array-wrapper{
+    display: table-cell;
+    vertical-align: bottom;
+}
+
+.array-element{
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right: 0.1%;
+    margin-left: 0.1%;
+}
+
+.array-element-sorted{
+    animation-name: sortedAnimation;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes sortedAnimation{
+    0%   {background-color:black;}
+  100% {background-color:rgb(15, 175, 224);}
 }
 
 .bottom-rectangle{
@@ -11,30 +36,50 @@
     bottom: 0%;
     width: 100%;
     height: 15%;
-    margin: 0;
 }
 
 .button-bar{
     position: absolute;
-    width: 100%;
-    height: 8%;
+    width: 100vw;
+    height: 10vh;
     left: 0%;
 }
 
 .button-container{
     position: relative;
     height: 100%;
-    width: 12%;
-    margin: 0px 0.1vw 0px;
+    width: 13vw;
+    margin-left: .1vw;
+    margin-right: .1vw;
     display: inline-block;
     vertical-align: top;
+}
 
+.sorting-button{
+    height: 100%;
+    width: 100%;
+    font-size: 0.8rem;
+    overflow-wrap: normal;
+    background-color: rgb(0, 255, 157);
+    border-radius: 20%;
+    -webkit-appearance: none;
+    -webkit-transition-duration: 0.2s; /* Safari */
+    transition-duration: 0.2s;
+    cursor: pointer;
+    font-family: Arial Black, Gadget, sans-serif;
+}
+
+.sorting-button:hover{
+    background-color: white;
 }
 
 .slider{
+    position: absolute;
     -webkit-appearance: none;
     top: 45%;
     height: 10%;
+    left: 0px;
+    width: 100%;
     margin: 0px 0.2vw 0px;
     opacity: 0.8;
     outline: none;
@@ -64,44 +109,6 @@
 .slider-label{
     position: relative;
     font-family: Arial Black, Gadget, sans-serif;
-    font-size: 1vw;
+    font-size: 1rem;
     text-align:  center;
-}
-
-.sorting-button{
-    height: 100%;
-    width: 100%;
-    font-size: 13h;
-    margin: 0px 2px 0px;
-    overflow-wrap: normal;
-    background-color: rgb(0, 255, 157);
-    border-radius: 20%;
-    -webkit-appearance: none;
-    -webkit-transition-duration: 0.2s; /* Safari */
-    transition-duration: 0.2s;
-    cursor: pointer;
-    font-family: Arial Black, Gadget, sans-serif;
-}
-
-.sorting-button:hover{
-    background-color: white;
-}
-
-.array-element{
-    display: inline-block;
-    vertical-align: bottom;
-    margin: 0px .08% 0px .08%;
-}
-
-.array-element-sorted{
-    animation-name: sortedAnimation;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    
-
-}
-
-@keyframes sortedAnimation{
-    0%   {background-color:black;}
-  100% {background-color:rgb(15, 175, 224);}
 }
