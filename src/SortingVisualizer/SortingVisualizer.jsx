@@ -71,7 +71,6 @@ export default class SortingVisualizer extends Component{
     render(){
         const {array} = this.state;
         const width = ((90 - 0.2 - (array.length*0.2))/(array.length));
-        console.log(width)
         return(
             <div>
                 <MetaTags>

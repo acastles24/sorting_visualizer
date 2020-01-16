@@ -40,25 +40,28 @@
 
 .button-bar{
     position: absolute;
-    width: 100vw;
-    height: 10vh;
-    left: 0%;
+    width: 96vw;
+    height: 25vh;
+    left: 2vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .button-container{
     position: relative;
-    height: 100%;
-    width: 13vw;
+    height: 50%;
     margin-left: .1vw;
     margin-right: .1vw;
-    display: inline-block;
     vertical-align: top;
+    flex: 1 0 15%
 }
 
 .sorting-button{
     height: 100%;
     width: 100%;
-    font-size: 0.8rem;
+    font-size: 2vh;
     overflow-wrap: normal;
     background-color: rgb(0, 255, 157);
     border-radius: 20%;
@@ -93,15 +96,15 @@
 .slider::-webkit-slider-thumb {
      /* Override default look */
     appearance: none;
-    width: 1.2vw; /* Set a specific slider handle width */
-    height: 1.2vw; /* Slider handle height */
+    width: 3vh; /* Set a specific slider handle width */
+    height: 3vh; /* Slider handle height */
     background: rgb(0, 255, 157); /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
   
 .slider::-moz-range-thumb {
-    width: 20px; /* Set a specific slider handle width */
-    height: 20px; /* Slider handle height */
+    width: 1.2vw; /* Set a specific slider handle width */
+    height: 1.2vw; /* Slider handle height */
     background: rgb(0, 255, 157); /* Green background */
     cursor: pointer; /* Cursor on hover */
 }
@@ -109,6 +112,6 @@
 .slider-label{
     position: relative;
     font-family: Arial Black, Gadget, sans-serif;
-    font-size: 1rem;
+    font-size: 2vh;
     text-align:  center;
 }
