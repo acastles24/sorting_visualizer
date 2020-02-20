@@ -22,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,6 +48,8 @@
     "@babel/preset-env": "^7.8.2",
     "@babel/preset-react": "^7.8.0",
     "babel-loader": "^8.0.6",
-    "babel-preset-stage-0": "^6.24.1"
-  }
+    "babel-preset-stage-0": "^6.24.1",
+    "gh-pages": "^2.2.0"
+  },
+  "homepage": "http://acastles24.github.io/sorting_visualizer"
 }
