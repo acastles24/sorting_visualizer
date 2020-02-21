@@ -1,6 +1,6 @@
 ## Sorting Visualizer
 
-Welcome to my Sorting Algorithm Visualizer! I built this React web application in order make the time complexities and steps of popular sorting algorithms tangible and comparable (and cool to watch). 
+Welcome to my Sorting Algorithm Visualizer! I built this React web application in order make the time complexities and steps of popular sorting algorithms tangible and comparable (and cool to watch). Please use Google Chrome or Safari to view.
 
 [Link to Visualizer Here](https://acastles24.github.io/sorting_visualizer/ "Link to Visualizer")
 
