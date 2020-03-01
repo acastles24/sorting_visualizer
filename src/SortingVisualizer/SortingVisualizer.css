@@ -13,10 +13,12 @@
 }
 
 .array-element{
-    display: inline-block;
+    position: relative;
+    display: inline-table;
     vertical-align: bottom;
     margin-right: 0.1%;
     margin-left: 0.1%;
+    background-color: black;
 }
 
 .array-element-sorted{

@@ -79,7 +79,7 @@ export default class SortingVisualizer extends Component{
                 <div id = 'arrayContainer' className = 'array-container'>
                     <div className = 'array-wrapper'>
                         {array.map((value, idX) => (
-                        <div className = 'array-element'  key = {idX} style = {{backgroundColor: 'black', width: `${width}%`, height: `${value}%`}}></div>
+                        <div className = 'array-element'  key = {idX} style = {{width: `${width}%`, height: `${value}%`}}></div>
                         ))}
                     </div>
                 </div>
