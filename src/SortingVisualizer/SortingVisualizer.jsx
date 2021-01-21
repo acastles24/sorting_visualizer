@@ -8,7 +8,6 @@ import {insertionSort} from '../SortingAlgorithms/insertionSort'
 import {resetExistingElements, areButtonsActive, getSortingSpeed} from '../SortingAlgorithms/utilities'
 import {getRandomInt} from '../SortingVisualizer/utilities'
 
-const BUTTON_SELECT_COLOR = 'rgb(15, 175, 224)'
 
 export default class SortingVisualizer extends Component{
     constructor(){
@@ -85,23 +84,23 @@ export default class SortingVisualizer extends Component{
                 </div>
                 <div className = 'button-bar'>
                     <div className = 'button-container'>
-                        <button id='mergeSortButton' className = 'sorting-button' onClick={() => {this.mergeSortButton(this.state.array); document.getElementById('mergeSortButton').style.backgroundColor = BUTTON_SELECT_COLOR}}>Merge Sort</button>
+                        <button id='mergeSortButton' className = 'sorting-button active' onClick={() => {this.mergeSortButton(this.state.array); document.getElementById('mergeSortButton').className = "sorting-button selected"}}>Merge Sort</button>
                     </div>
                     <div className = 'button-container'>
-                        <button id='quickSortButton' className = 'sorting-button' onClick={() => {this.quickSortButton(this.state.array); document.getElementById('quickSortButton').style.backgroundColor = BUTTON_SELECT_COLOR}}>Quick Sort</button>
+                        <button id='quickSortButton' className='sorting-button active' onClick={() => { this.quickSortButton(this.state.array); document.getElementById('quickSortButton').className = "sorting-button selected"}}>Quick Sort</button>
                     </div>
                     <div className = 'button-container'>
-                        <button id='bubbleSortButton' className = 'sorting-button' onClick={() => {this.bubbleSortButton(this.state.array); document.getElementById('bubbleSortButton').style.backgroundColor = BUTTON_SELECT_COLOR}}>Bubble Sort</button>
+                        <button id='bubbleSortButton' className='sorting-button active' onClick={() => { this.bubbleSortButton(this.state.array); document.getElementById('bubbleSortButton').className = "sorting-button selected"}}>Bubble Sort</button>
                     </div>
                     <div className = 'button-container'>
-                        <button id='insertionSortButton' className = 'sorting-button' onClick={() => {this.insertionSortButton(this.state.array); document.getElementById('insertionSortButton').style.backgroundColor = BUTTON_SELECT_COLOR}}>Insertion Sort</button>
+                        <button id='insertionSortButton' className='sorting-button active' onClick={() => { this.insertionSortButton(this.state.array); document.getElementById('insertionSortButton').className = "sorting-button selected"}}>Insertion Sort</button>
                     </div>
                     <div className = 'button-container'>
-                        <button id='randomButton' className = 'sorting-button' onClick={() => this.resetArray(this.state.array.length)}>Generate Random Array</button>
+                        <button id='randomButton' className = 'sorting-button active' onClick={() => this.resetArray(this.state.array.length)}>Generate Random Array</button>
                     </div>
                     <div className = 'button-container'>
                         <div id = 'sliderLabel' className = 'slider-label'>Array Size</div>
-                        <input className = 'slider' type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" 
+                        <input className = 'slider slider-active' type = "range" name = "length" id = "arrayLengthSlider" min = "10" max = "200" step = "5" 
                             defaultValue = {100} onInput = 
                             {() => this.resetArray(document.getElementById("arrayLengthSlider").value)}></input>
                     </div>

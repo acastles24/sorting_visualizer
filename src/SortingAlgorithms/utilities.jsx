@@ -9,7 +9,7 @@ export function highlightBar(index, value, speed){
       setTimeout(() => {
         const arrayBars = document.getElementsByClassName('array-element');
         const barStyle = arrayBars[index].style
-        barStyle.backgroundColor = 'red';
+        barStyle.backgroundColor = '#5CDB95';
         barStyle.height = `${value}%`;
         resolve()
       }, speed)
@@ -26,7 +26,7 @@ export function resetBarColor(index, speed){
         setTimeout(() => {
         const arrayBars = document.getElementsByClassName('array-element');
         const barStyle = arrayBars[index].style
-        barStyle.backgroundColor = 'black';
+          barStyle.backgroundColor = '#05386B';
         resolve()
     }, speed)
     })
@@ -102,16 +102,26 @@ export function areButtonsActive(yesOrNo){
     if (yesOrNo === 'N'){
         bool_ = true
         document.getElementById("sliderLabel").style.color = "grey"
+      document.getElementById("arrayLengthSlider").className = "slider"
     }
     else{
-      document.getElementById("sliderLabel").style.color = "black"
+      document.getElementById("sliderLabel").style.color = "#05386B"
+      document.getElementById("arrayLengthSlider").className = "slider slider-active"
     }
+
+    document.getElementById("arrayLengthSlider").disabled = bool_
+
     let buttons = document.getElementsByTagName("button");
         for (var i = 0; i <= buttons.length - 1; ++i) {
             buttons[i].disabled = bool_
-            buttons[i].style.backgroundColor = 'rgb(0, 255, 157)'
+            if (bool_){
+               buttons[i].className = "sorting-button disabled"
+            }
+            else{
+              buttons[i].className = "sorting-button active"
+            // buttons[i].style.backgroundColor = 'rgb(0, 255, 157)'
           }
-    document.getElementById("arrayLengthSlider").disabled = bool_
+        }
 }
 
 /**

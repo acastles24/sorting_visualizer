@@ -18,7 +18,7 @@
     vertical-align: bottom;
     margin-right: 0.1%;
     margin-left: 0.1%;
-    background-color: black;
+    background-color: #05386B;
 }
 
 .array-element-sorted{
@@ -28,12 +28,13 @@
 }
 
 @keyframes sortedAnimation{
-    0%   {background-color:black;}
-  100% {background-color:rgb(15, 175, 224);}
+    0%   {background-color:#05386B;}
+  100% {background-color:#2d72b8;}
 }
 
 .bottom-rectangle{
-    background-image: linear-gradient(rgb(15, 175, 224), white);
+    /* background-image: linear-gradient(rgb(15, 175, 224), white); */
+    background-color: #8EE4AF;
     position: absolute;
     bottom: 0%;
     width: 100%;
@@ -49,6 +50,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin-top: 5px;
 }
 
 .button-container{
@@ -65,16 +67,33 @@
     width: 100%;
     font-size: 2vh;
     overflow-wrap: normal;
-    background-color: rgb(0, 255, 157);
+    background-color: #8EE4AF;
     border-radius: 20%;
     -webkit-appearance: none;
     -webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;
-    cursor: pointer;
     font-family: Arial Black, Gadget, sans-serif;
+    border: #05386B solid 1px;
+    color: #05386B;
 }
 
-.sorting-button:hover{
+.disabled{
+  background-color: #cccccc;
+}
+
+.active{
+    cursor: pointer;
+}
+
+.sorting-button:focus {outline:0;}
+
+.selected{
+    background-color: #05386B;
+    color: #f0f5de;
+}
+
+
+.active:hover{
     background-color: white;
 }
 
@@ -86,34 +105,49 @@
     left: 0px;
     width: 100%;
     margin: 0px 0.2vw 0px;
-    opacity: 0.8;
     outline: none;
-    background-color: grey;
+    background-color: #05386B;
+    opacity: 0.8;
 }
 
-.slider:hover {
+input[type=range]::-moz-range-thumb {
+    width: 3vh; /* Set a specific slider handle width */
+    height: 3vh; /* Slider handle height */
+    background: #8EE4AF; /* Green background */
+    border-radius: 20%;
+}
+
+input[type=range]::-moz-focus-outer {
+    border: 0;
+}
+
+.slider-active:hover {
     opacity: 1; /* Fully shown on mouse-over */
   }
 
 .slider::-webkit-slider-thumb {
      /* Override default look */
-    appearance: none;
+    -webkit-appearance: none;
     width: 3vh; /* Set a specific slider handle width */
     height: 3vh; /* Slider handle height */
-    background: rgb(0, 255, 157); /* Green background */
-    cursor: pointer; /* Cursor on hover */
+    background: #8EE4AF; /* Green background */
+    border-radius: 20%;
   }
-  
-.slider::-moz-range-thumb {
-    width: 1.2vw; /* Set a specific slider handle width */
-    height: 1.2vw; /* Slider handle height */
-    background: rgb(0, 255, 157); /* Green background */
-    cursor: pointer; /* Cursor on hover */
-}
+
+
+  .slider-active::-webkit-slider-thumb{
+    cursor: pointer;
+  }
+
 
 .slider-label{
     position: relative;
     font-family: Arial Black, Gadget, sans-serif;
+    color: #05386B;
     font-size: 2vh;
     text-align:  center;
+}
+
+button{
+    border: none;
 }
