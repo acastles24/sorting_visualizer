@@ -72,6 +72,7 @@
     transition-duration: 0.2s;
     cursor: pointer;
     font-family: Arial Black, Gadget, sans-serif;
+    border: black solid 1px;
 }
 
 .sorting-button:hover{
@@ -116,4 +117,8 @@
     font-family: Arial Black, Gadget, sans-serif;
     font-size: 2vh;
     text-align:  center;
+}
+
+button{
+    border: none;
 }
