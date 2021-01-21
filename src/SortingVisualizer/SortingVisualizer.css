@@ -18,7 +18,7 @@
     vertical-align: bottom;
     margin-right: 0.1%;
     margin-left: 0.1%;
-    background-color: black;
+    background-color: #05386B;
 }
 
 .array-element-sorted{
@@ -28,12 +28,13 @@
 }
 
 @keyframes sortedAnimation{
-    0%   {background-color:black;}
-  100% {background-color:rgb(15, 175, 224);}
+    0%   {background-color:#05386B;}
+  100% {background-color:#2d72b8;}
 }
 
 .bottom-rectangle{
-    background-image: linear-gradient(rgb(15, 175, 224), white);
+    /* background-image: linear-gradient(rgb(15, 175, 224), white); */
+    background-color: #8EE4AF;
     position: absolute;
     bottom: 0%;
     width: 100%;
@@ -66,20 +67,26 @@
     width: 100%;
     font-size: 2vh;
     overflow-wrap: normal;
-    background-color: rgb(0, 255, 157);
+    background-color: #8EE4AF;
     border-radius: 20%;
     -webkit-appearance: none;
     -webkit-transition-duration: 0.2s; /* Safari */
     transition-duration: 0.2s;
     cursor: pointer;
     font-family: Arial Black, Gadget, sans-serif;
-    border: black solid 1px;
+    border: #05386B solid 1px;
+    color: #05386B;
+}
+
+.disabled{
+  background-color: #cccccc;
 }
 
 .sorting-button:focus {outline:0;}
 
 .selected{
-    background-color: rgb(15, 175, 224);
+    background-color: #05386B;
+    color: #f0f5de;
 }
 
 
@@ -96,7 +103,7 @@
     width: 100%;
     margin: 0px 0.2vw 0px;
     outline: none;
-    background-color: grey;
+    background-color: #05386B;
     opacity: 0.8;
 }
 
@@ -109,7 +116,7 @@
     appearance: none;
     width: 3vh; /* Set a specific slider handle width */
     height: 3vh; /* Slider handle height */
-    background: rgb(0, 255, 157); /* Green background */
+    background: #8EE4AF; /* Green background */
     border-radius: 20%;
   }
 
@@ -121,6 +128,7 @@
 .slider-label{
     position: relative;
     font-family: Arial Black, Gadget, sans-serif;
+    color: #05386B;
     font-size: 2vh;
     text-align:  center;
 }

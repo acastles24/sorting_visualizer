@@ -9,7 +9,7 @@ export function highlightBar(index, value, speed){
       setTimeout(() => {
         const arrayBars = document.getElementsByClassName('array-element');
         const barStyle = arrayBars[index].style
-        barStyle.backgroundColor = 'red';
+        barStyle.backgroundColor = '#5CDB95';
         barStyle.height = `${value}%`;
         resolve()
       }, speed)
@@ -26,7 +26,7 @@ export function resetBarColor(index, speed){
         setTimeout(() => {
         const arrayBars = document.getElementsByClassName('array-element');
         const barStyle = arrayBars[index].style
-        barStyle.backgroundColor = 'black';
+          barStyle.backgroundColor = '#05386B';
         resolve()
     }, speed)
     })
@@ -105,7 +105,7 @@ export function areButtonsActive(yesOrNo){
       document.getElementById("arrayLengthSlider").className = "slider"
     }
     else{
-      document.getElementById("sliderLabel").style.color = "black"
+      document.getElementById("sliderLabel").style.color = "#05386B"
       document.getElementById("arrayLengthSlider").className = "slider slider-active"
     }
 
@@ -115,7 +115,7 @@ export function areButtonsActive(yesOrNo){
         for (var i = 0; i <= buttons.length - 1; ++i) {
             buttons[i].disabled = bool_
             if (bool_){
-               buttons[i].className = "sorting-button"
+               buttons[i].className = "sorting-button disabled"
             }
             else{
               buttons[i].className = "sorting-button active"
