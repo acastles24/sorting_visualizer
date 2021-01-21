@@ -1,5 +1,7 @@
-# Sorting Algorithm Visualizer
+# [Sorting Algorithm Visualizer](https://acastles24.github.io/sorting_visualizer/ "Link to Visualizer")
 *An interactive web application in React to visualize execution of popular sorting algorithms.* [Live link to visualizer.](https://acastles24.github.io/sorting_visualizer/ "Link to Visualizer")
+
+<img src="/images/main_operation_gif.gif" width="800">
 
 Current supported algorithms:
  - Merge Sort - divide array into subarrays, sort, then merge back into whole array.
